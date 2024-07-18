@@ -60,10 +60,11 @@ userRouter.post('/login',async(req,res)=>{
 const verifyToken = (req,res,next) =>{
     const auth = req.headers.authorization
     if(auth){
-        jwt.verify(auth,process.env.PrivateKey,(err)=>{
+        jwt.verify(auth,process.env.PrivateKey,(err, decoded)=>{
             if(err){
                 return res.send({message:"Invalid Token"}) 
             }
+            req.user = decoded; //Add the decoded user info to the request
             next()
         })
     }
