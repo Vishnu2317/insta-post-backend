@@ -36,10 +36,10 @@ postRouter.delete('/delete-post/:id', verifyToken, async (req, res) => {
 //Your-Posts
 
 postRouter.get('/yourposts', verifyToken,  async (req, res) => {
-    const userId = req.user._id; // assuming req.user is the authenticated user
+    const userId = req.params.id // assuming req.user is the authenticated user
     try {
       
-      const posts = await postModel.find({ createdBy: userId });
+      const posts = await postModel.findOne({ createdBy: userId });
       res.send(posts);
     } catch (error) {
       console.log(error);
