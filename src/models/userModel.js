@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
     emailID:{type:String,required:true},
     userImage:{type:String,required:true},
     mobileNumber:{type:String,required:true},
-    password:{type:String,required:true}
+    password:{type:String,required:true},
+     
 })
 
 const userModel = mongoose.model("users",userSchema)
