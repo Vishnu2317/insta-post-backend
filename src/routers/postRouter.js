@@ -18,21 +18,21 @@ postRouter.get('/posts',async(req,res)=>{
     }
 })
 
-//Post deleted
+// Post deleted
 
-// postRouter.delete('/delete-post/:id', verifyToken, async (req, res) => {
-//     const postId = req.params.id
-//     try {
-//         const deletedPost = await postModel.findByIdAndDelete(postId);
-//         // if (!deletedPost) {
-//         //     return res.status(404).send({ message: "Post not found" });
-//         // }
-//         res.send({ message: "Post deleted successfully" });
-//     } catch (error) {
-//         console.log(error);
-//         res.status(500).send({ message: "Error deleting post" });
-//     }
-// });
+postRouter.delete('/delete-post/:id', verifyToken, async (req, res) => {
+    const postId = req.params.id
+    try {
+        const deletedPost = await postModel.findByIdAndDelete(postId);
+        // if (!deletedPost) {
+        //     return res.status(404).send({ message: "Post not found" });
+        // }
+        res.send({ message: "Post deleted successfully" });
+    } catch (error) {
+        console.log(error);
+        res.status(500).send({ message: "Error deleting post" });
+    }
+});
 
 //Your-Posts
 
